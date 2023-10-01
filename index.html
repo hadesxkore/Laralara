@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lungningning</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0e6ff;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff66b2;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #ff66b2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff3399;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff66b2;
+            animation: fadeIn 1s ease;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .loading {
+            display: none;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lungningning</h1>
+        <label for="yourName">Your Name:</label>
+        <input type="text" id="yourName" placeholder="Your Name">
+        <br><br>
+        <label for="crushName">Kahit sino:</label>
+        <input type="text" id="crushName" placeholder="Crush's Name">
+        <br><br>
+        <button onclick="calculateLove()">Calculate Love</button>
+        <div class="loading" id="loading"></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateLove() {
+            const yourName = document.getElementById('yourName').value;
+            const crushName = document.getElementById('crushName').value;
+            const resultElement = document.getElementById('result');
+            const loadingElement = document.getElementById('loading');
+
+            // Hide the result and show loading animation
+            resultElement.style.display = 'none';
+            loadingElement.style.display = 'inline-block';
+
+            // Simulate loading delay
+            setTimeout(() => {
+                // Generate a random "love percentage" between 80 and 100.
+                const lovePercentage = Math.floor(Math.random() * 21) + 80;
+
+                // Hide loading animation and display the result
+                loadingElement.style.display = 'none';
+                resultElement.style.display = 'block';
+                resultElement.innerHTML = `${yourName} and ${crushName} are ${lovePercentage}% connected! 💖`;
+            }, 2000); // Simulate a 2-second delay (adjust as needed)
+        }
+    </script>
+</body>
+</html>
